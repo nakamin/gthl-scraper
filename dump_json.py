@@ -1,6 +1,5 @@
 import requests
-import urllib
-from bs4 import BeautifulSoup
+from pyquery import PyQuery as pq
 
 url = "https://ssp.agilex.ca/gthlssp/standings.aspx"
 
@@ -11,9 +10,9 @@ headers_1 = {
 
 response = requests.request("GET", url, headers=headers_1)
 
-html = BeautifulSoup(response.text, "html.parser")
-vs = html.select("#__VIEWSTATE")[0]["value"]
-ev = html.select("#__EVENTVALIDATION")[0]["value"]
+d = pq(response.text)
+vs = d("#__VIEWSTATE")
+ev = d("#__EVENTVALIDATION")
 
 payload = {
     "__EVENTVALIDATION": ev,
