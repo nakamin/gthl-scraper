@@ -14,3 +14,6 @@ SELENIUM_DRIVER_ARGUMENTS = ['--headless']
 DOWNLOADER_MIDDLEWARES = {
     'scrapy_selenium.SeleniumMiddleware': 800
 }
+
+FEED_FORMAT = "json"
+FEED_URI = "teams.json"
