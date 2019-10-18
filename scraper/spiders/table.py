@@ -1,4 +1,5 @@
 import scrapy
+import time
 from scrapy_selenium import SeleniumRequest
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
@@ -13,7 +14,6 @@ class TableSpider(scrapy.Spider):
     def start_requests(self):
         yield SeleniumRequest(
             url="https://www.gthlcanada.com/leaguestandings/",
-            wait_time=20,
             callback=self.parse_teams,
         )
 
@@ -21,13 +21,13 @@ class TableSpider(scrapy.Spider):
         driver = response.request.meta["driver"]
         iframe = driver.find_element_by_id("iframed-stats")
         driver.switch_to.frame(iframe)
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "st_tblRepeater")))
+        time.sleep(10)
         division = Select(driver.find_element_by_id("ddlDiv"))
         division.select_by_value("MBN")
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "st_tblRepeater")))
+        time.sleep(10)
         category = Select(driver.find_element_by_id("ddlCat"))
         category.select_by_value("A1")
-        driver.implicitly_wait(10)
+        time.sleep(10)
 
         r = scrapy.Selector(text=driver.page_source)
 
