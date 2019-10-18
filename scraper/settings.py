@@ -3,16 +3,14 @@ BOT_NAME = "scraper"
 SPIDER_MODULES = ["scraper.spiders"]
 NEWSPIDER_MODULE = "scraper.spiders"
 
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
+
+SELENIUM_DRIVER_NAME = "chrome"
+SELENIUM_DRIVER_EXECUTABLE_PATH = (
+    "C:\\Users\\AntonKaminsky\\Documents\\projects\\gthl-scraper\\bin\\chromedriver.exe"
+)
+SELENIUM_DRIVER_ARGUMENTS = ['--headless']
 
 DOWNLOADER_MIDDLEWARES = {
-    "scrapy_splash.SplashCookiesMiddleware": 723,
-    "scrapy_splash.SplashMiddleware": 725,
-    "scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware": 810,
+    'scrapy_selenium.SeleniumMiddleware': 800
 }
-
-SPIDER_MIDDLEWARES = {"scrapy_splash.SplashDeduplicateArgsMiddleware": 100}
-
-DUPEFILTER_CLASS = "scrapy_splash.SplashAwareDupeFilter"
-
-SPLASH_URL = "http://192.168.59.103:8050"
