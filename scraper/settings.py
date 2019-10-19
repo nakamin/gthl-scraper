@@ -9,7 +9,7 @@ SELENIUM_DRIVER_NAME = "chrome"
 SELENIUM_DRIVER_EXECUTABLE_PATH = (
     "C:\\Users\\AntonKaminsky\\Documents\\projects\\gthl-scraper\\bin\\chromedriver.exe"
 )
-SELENIUM_DRIVER_ARGUMENTS = ['--headless']
+SELENIUM_DRIVER_ARGUMENTS = ['--headless', '--no-sandbox']
 
 DOWNLOADER_MIDDLEWARES = {
     'scrapy_selenium.SeleniumMiddleware': 800
