@@ -1,5 +1,5 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'nakamin/gthl-scraper', '.' ]
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/gthl-scraper', '.' ]
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'nakamin/gthl-scraper']
+  args: ['push', 'gcr.io/$PROJECT_ID/gthl-scraper']
