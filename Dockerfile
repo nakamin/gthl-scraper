@@ -1,9 +1,11 @@
-FROM python:3-alpine
+FROM selenium/standalone-chrome
 WORKDIR /usr/local/bin/gthl-scraper
+USER root
+RUN apt-get update && apt-get install -y python3-pip
 COPY ./requirements.txt ./requirements.txt
-RUN pip install -r requirements.txt
-RUN apk update && apk add --no-cache chromium-chromedriver
+RUN pip3 install -r requirements.txt
 COPY ./scraper ./scraper
 COPY ./scrapy.cfg ./scrapy.cfg
 COPY ./settings_docker.py ./scraper/settings.py
-ENTRYPOINT [ "scrapy", "crawl", "table" ]
+ENTRYPOINT [ "/bin/bash" ]
+# ENTRYPOINT [ "scrapy", "crawl", "table" ]
