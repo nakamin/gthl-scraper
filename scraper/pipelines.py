@@ -6,7 +6,7 @@ import scrapy
 class FirestoreWriterPipeline(object):
     def open_spider(self, spider):
         db = firestore.Client()
-        root = db.collection("standings-snapshots")
+        root = db.collection("snapshots")
         meta = root.document("meta")
         last_write = meta.get().get("last_update").date()
         now = datetime.now()
