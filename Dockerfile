@@ -1,6 +1,7 @@
 # find out how to authenticate firebase from gcp vm
 # make pipeline to push to firebase
-FROM selenium/standalone-chrome
+# try using firefox instead of chrome to avoid sandbox errors
+FROM selenium/standalone-firefox
 USER root
 WORKDIR /usr/local/bin/gthl-scraper
 RUN apt-get -y update && apt-get -y install python3 python3-pip cron

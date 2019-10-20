@@ -5,9 +5,9 @@ NEWSPIDER_MODULE = "scraper.spiders"
 
 ROBOTSTXT_OBEY = False
 
-SELENIUM_DRIVER_NAME = "chrome"
-SELENIUM_DRIVER_EXECUTABLE_PATH = 'chromedriver'
-SELENIUM_DRIVER_ARGUMENTS = ['--headless', '--no-sandbox']
+SELENIUM_DRIVER_NAME = "firefox"
+SELENIUM_DRIVER_EXECUTABLE_PATH = 'geckodriver'
+SELENIUM_DRIVER_ARGUMENTS = ['-headless']
 
 DOWNLOADER_MIDDLEWARES = {
     'scrapy_selenium.SeleniumMiddleware': 800
