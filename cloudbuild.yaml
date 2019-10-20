@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-   args: ['pull', 'gcr.io/gthl-scraper/scraper']
+  args: ['pull', 'gcr.io/gthl-scraper/scraper']
 - name: 'gcr.io/cloud-builders/docker'
   args: [
             'build',
@@ -8,4 +8,6 @@ steps:
             '--cache-from', 'gcr.io/gthl-scraper/scraper',
             '.'
         ]
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['compute', 'instances', 'reset', 'scraper', '--project=gthl-scraper']
 images: ['gcr.io/gthl-scraper/scraper']
