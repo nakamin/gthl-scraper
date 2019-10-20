@@ -3,3 +3,5 @@ steps:
   args: [ 'build', '-t', 'gcr.io/gthl-scraper/scraper:latest', '.' ]
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/gthl-scraper/scraper:latest']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['compute', 'instances', 'reset', 'scraper']
