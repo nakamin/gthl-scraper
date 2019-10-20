@@ -3,7 +3,7 @@
 FROM ubuntu
 WORKDIR /usr/local/bin/gthl-scraper
 RUN apt-get -y update \
-    && apt-get install -yqq unzip cron python3 python3-pip wget \
+    && apt-get install -yqq unzip cron python3 python3-pip wget curl \
     && wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip \
     && unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
