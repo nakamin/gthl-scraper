@@ -14,6 +14,6 @@ DOWNLOADER_MIDDLEWARES = {
 }
 
 ITEM_PIPELINES = {
-    'myproject.pipelines.FirestoreWriterPipeline': 800,
+    'scraper.pipelines.FirestoreWriterPipeline': 800,
 }
 
