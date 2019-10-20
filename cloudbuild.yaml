@@ -3,8 +3,7 @@ steps:
    entrypoint: 'bash'
    args:
    - '-c'
-   - |
-     docker pull gcr.io/gthl-scraper/scraper || exit 0
+   - docker pull gcr.io/gthl-scraper/scraper || exit 0
 - name: 'gcr.io/cloud-builders/docker'
   args: [
             'build',
