@@ -11,5 +11,5 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/gthl-scraper/scraper']
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['compute', 'instances', 'reset', 'scraper', '---zone=us-east1-b']
+  args: ['compute', 'instances', 'reset', 'scraper', '--zone=us-east1-b']
 timeout: 900s
