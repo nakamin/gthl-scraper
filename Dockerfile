@@ -15,5 +15,5 @@ RUN pip install -r requirements.txt --no-cache-dir
 COPY ./scraper ./scraper
 COPY ./scrapy.cfg ./scrapy.cfg
 COPY ./settings_docker.py ./scraper/settings.py
-RUN echo "@daily root cd /usr/local/bin/gthl-scraper && scrapy crawl teams" > /etc/cron.d/scrapybot
+RUN echo 'MAILTO=antonwizkam@gmail.com\n0 0 * * * root cd /usr/local/bin/gthl-scraper && scrapy crawl table' > /etc/cron.d/scrapybot
 ENTRYPOINT [ "cron", "-f" ]
