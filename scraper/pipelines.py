@@ -8,16 +8,13 @@ class FirestoreWriterPipeline(object):
         db = firestore.Client()
         root = db.collection("standings-snapshots")
         meta = root.document("meta")
-        last_write = meta.get("last_update").date()
+        last_write = meta.get().get("last_update").date()
         now = datetime.now()
         self.should_run = last_write != now.date()
         if self.should_run:
             self.new_snapshot = root.document()
             self.new_snapshot.set({"timestamp": now})
             meta.set({"last_update": now})
-
-    def close_spider(self, spider):
-        pass
 
     def process_item(self, item, spider):
         if self.should_run:
