@@ -14,7 +14,7 @@ RUN apt-get install -yqq unzip \
 # set display port to avoid crash
 ENV DISPLAY=:99
 COPY ./requirements.txt ./requirements.txt
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 COPY ./scraper ./scraper
 COPY ./scrapy.cfg ./scrapy.cfg
 COPY ./settings_docker.py ./scraper/settings.py
