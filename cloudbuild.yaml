@@ -1,7 +1,6 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/gthl-scraper/scraper:latest', '.' ]
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/gthl-scraper/scraper:latest']
+- name: gcr.io/kaniko-project/executor:latest
+  args: ['--destination=gcr.io/gthl-scraper/scraper',
+         '--cache=true']
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['compute', 'instances', 'reset', 'scraper', '--zone=us-east1-b']
