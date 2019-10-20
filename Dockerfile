@@ -3,7 +3,7 @@
 # setup ci/cd pipeline with gcp
 FROM selenium/standalone-chrome
 WORKDIR /usr/local/bin/gthl-scraper
-RUN sudo apt-get -y update && sudo apt-get -y install python3 pip3 cron
+RUN sudo apt-get -y update && sudo apt-get -y install python3 python3-pip cron
 COPY ./requirements.txt ./requirements.txt
 RUN pip3 install -r requirements.txt
 COPY ./scraper ./scraper
