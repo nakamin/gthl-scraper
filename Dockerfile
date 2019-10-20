@@ -1,6 +1,5 @@
 # find out how to authenticate firebase from gcp vm
 # make pipeline to push to firebase
-# setup ci/cd pipeline with gcp
 FROM selenium/standalone-chrome
 USER root
 WORKDIR /usr/local/bin/gthl-scraper
