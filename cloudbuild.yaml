@@ -11,3 +11,4 @@ steps:
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['compute', 'instances', 'reset', 'scraper', '--project=gthl-scraper']
 images: ['gcr.io/gthl-scraper/scraper']
+timeout: 900s
