@@ -15,3 +15,4 @@ RUN pip install -r requirements.txt --no-cache-dir
 COPY ./scraper ./scraper
 COPY ./scrapy.cfg ./scrapy.cfg
 COPY ./settings_docker.py ./scraper/settings.py
+ENTRYPOINT [ "scrapyrt", "-p", "${PORT:-8080}" ]
