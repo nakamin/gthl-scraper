@@ -1,5 +1,3 @@
-# find out how to authenticate firebase from gcp vm
-# make item pipeline to push to firebase
 FROM python:3
 WORKDIR /usr/local/bin/gthl-scraper
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
@@ -11,8 +9,8 @@ RUN apt-get install -yqq unzip \
     && unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 ENV DISPLAY=:99
 COPY ./requirements.txt ./requirements.txt
-RUN pip install -r requirements.txt --no-cache-dir
+RUN pip install -r requirements.txt
 COPY ./scraper ./scraper
 COPY ./scrapy.cfg ./scrapy.cfg
 COPY ./settings_docker.py ./scraper/settings.py
-ENTRYPOINT scrapyrt -p ${PORT:-8080}
+ENTRYPOINT [ "scrapyrt", "-p", "8080" ]
