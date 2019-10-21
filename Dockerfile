@@ -13,4 +13,5 @@ RUN pip install -r requirements.txt
 COPY ./scraper ./scraper
 COPY ./scrapy.cfg ./scrapy.cfg
 COPY ./settings_docker.py ./scraper/settings.py
-ENTRYPOINT [ "scrapyrt", "-p", "8080" ]
+COPY ./entrypoint.sh ./entrypoint.sh
+ENTRYPOINT [ "./entrypoint.sh" ]
