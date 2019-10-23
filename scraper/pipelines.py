@@ -17,7 +17,7 @@ class FirestoreWriterPipeline(object):
             meta.set(
                 {
                     "last_update": now,
-                    "last_update_id": self.new_snapshot.get().get("id"),
+                    "last_update_id": self.new_snapshot.get().id,
                 }
             )
 
