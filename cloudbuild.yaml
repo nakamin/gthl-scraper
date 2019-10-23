@@ -13,7 +13,7 @@ steps:
         "--image",
         "gcr.io/gthl-scraper/scraper",
         "--region",
-        "us-east-1",
+        "us-east1",
         "--platform",
         "managed",
         "--quiet",
