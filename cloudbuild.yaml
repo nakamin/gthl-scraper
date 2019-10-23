@@ -1,13 +1,31 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['pull', 'gcr.io/gthl-scraper/scraper']
-- name: 'gcr.io/cloud-builders/docker'
-  args: [
-            'build',
-            '-t', 'gcr.io/gthl-scraper/scraper',
-            '--cache-from', 'gcr.io/gthl-scraper/scraper',
-            '.'
-        ]
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/gthl-scraper/scraper']
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["pull", "gcr.io/gthl-scraper/scraper"]
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "gcr.io/gthl-scraper/scraper",
+        "--cache-from",
+        "gcr.io/gthl-scraper/scraper",
+        ".",
+      ]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/gthl-scraper/scraper"]
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      [
+        "beta",
+        "run",
+        "deploy",
+        "scraper",
+        "--image",
+        "gcr.io/gthl-scraper/scraper",
+        "--region",
+        "us-east-1",
+        "--platform",
+        "managed",
+        "--quiet",
+      ]
 timeout: 900s

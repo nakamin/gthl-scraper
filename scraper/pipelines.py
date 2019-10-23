@@ -14,7 +14,12 @@ class FirestoreWriterPipeline(object):
         if self.should_run:
             self.new_snapshot = root.document()
             self.new_snapshot.set({"timestamp": now})
-            meta.set({"last_update": now})
+            meta.set(
+                {
+                    "last_update": now,
+                    "last_update_id": self.new_snapshot.get().get("id"),
+                }
+            )
 
     def process_item(self, item, spider):
         if self.should_run:
