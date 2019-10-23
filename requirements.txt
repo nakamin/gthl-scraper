@@ -1,3 +1,4 @@
 scrapy-selenium
 google-cloud-firestore
 scrapy
+scrapyrt
