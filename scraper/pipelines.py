@@ -5,24 +5,16 @@ import scrapy
 
 class FirestoreWriterPipeline(object):
     def open_spider(self, spider):
-        db = firestore.Client()
-        root = db.collection("snapshots")
-        meta = root.document("meta")
-        last_write = meta.get().get("last_update").date()
+        root = firestore.Client().collection("snapshots")
         now = datetime.now()
-        self.should_run = last_write != now.date()
-        if self.should_run:
-            self.new_snapshot = root.document()
-            self.new_snapshot.set({"timestamp": now})
-            meta.set(
-                {
-                    "last_update": now,
-                    "last_update_id": self.new_snapshot.get().id,
-                }
-            )
+        self.new_doc = root.document()
+        self.new_doc.set({"timestamp": now})
+        id = self.new_doc.get().id
+        root.document("meta").set({"newest_id": id})
+        self.teams_list = []
+
+    def close_spider(self, spider):
+        self.new_doc.set({"teams": self.teams_list})
 
     def process_item(self, item, spider):
-        if self.should_run:
-            self.new_snapshot.collection("teams").document().set(dict(item))
-        else:
-            raise scrapy.exceptions.DropItem("Already pushed to firebase")
+        self.teams_list.append(dict(item))
